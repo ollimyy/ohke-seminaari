@@ -21,7 +21,7 @@ This is a work in progress price estimation service for the [Sampo app](https://
 4. Start the service:
 
 	```
-	uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+	uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 	```
 
 5. Make a get request using a web browser or a tool like `curl`.
