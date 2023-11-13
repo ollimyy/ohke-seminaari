@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Query
-from src.price_estimator import estimate_price_from_condition
+from price_estimator import estimate_price_from_condition
+import re
 
 app = FastAPI()
 
@@ -12,6 +13,6 @@ async def estimate_price(
     item_description = item_description
     condition = condition
 
-    price_estimate = estimate_price_from_condition(condition)
+    price_estimate = estimate_price_from_condition(condition, item_description)
 
     return price_estimate
