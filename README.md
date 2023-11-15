@@ -18,13 +18,16 @@ This is a work in progress price estimation service for the [Sampo app](https://
    pip install -r requirements.txt
    ```
 
-4. Start the service:
+4. Configure MongoDB in a .env file. Alternatively you can use the sample data
+generator to generate data in price estimator.
+
+5. Start the service:
 
 	```
 	uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 	```
 
-5. Make a get request using a web browser or a tool like `curl`.
+6. Make a get request using a web browser or a tool like `curl`.
 
 ```
 http://localhost:8000/estimate-price?item_description=yourItemDescription&condition=3
