@@ -2,7 +2,6 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.linear_model import LinearRegression
-
 from get_data_from_db import get_data_frame
 
 def remove_outliers(data):
@@ -19,27 +18,6 @@ def remove_outliers(data):
     processed_data = data.drop(outliers.index)
 
     return processed_data
-
-def estimate_price_from_condition(condition: int, item_description: str):
-    if condition < 1 or condition > 5:
-        raise ValueError('Condition must be between 1 and 5')
-
-    # get data matching the item description and remove outliers
-    data = remove_outliers(get_data_frame(item_description))
-
-    # separate condition and price columns
-    X = data[['condition']]
-    y = data['price']
-
-    model = LinearRegression()
-
-    # fit the model with the dataset
-    model.fit(X.values, y)
-
-    # make a prediction based on the condition
-    estimation = model.predict([[condition]])
-
-    return int(estimation[0])
 
 # make an estimation and plot it, can be ran from the commandline
 def estimate_and_plot(condition: int, item_description: str):
@@ -81,7 +59,8 @@ def estimate_and_plot(condition: int, item_description: str):
     plt.grid(True)
 
     # Save the plot to a file
-    plt.savefig('estimation_plot.png')
+    plt.savefig('app/estimation_plot.png')
+    print("Plot saved to estimation_plot.png.")
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
