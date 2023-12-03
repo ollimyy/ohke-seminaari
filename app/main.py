@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Query, HTTPException
 from fastapi.responses import JSONResponse
 
-from .price_estimator import estimate_price_from_condition
+from .estimation import estimate_price_from_condition
 
 app = FastAPI()
 

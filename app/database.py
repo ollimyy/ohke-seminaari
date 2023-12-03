@@ -20,7 +20,7 @@ item_collection = db[ITEM_COLLECTION]
 def find_by_keyword(query):
     return list(item_collection.find(query))
 
-def get_data_frame(item_description):
+def get_dataframe_for_item(item_description):
     query = {
         'title': {
             '$regex': re.compile(item_description, re.IGNORECASE),

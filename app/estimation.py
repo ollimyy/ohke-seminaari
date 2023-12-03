@@ -1,5 +1,5 @@
 from sklearn.linear_model import LinearRegression
-from .get_data_from_db import get_data_frame
+from .database import get_dataframe_for_item
 
 def remove_outliers(data):
     # https://saturncloud.io/blog/how-to-detect-and-exclude-outliers-in-a-pandas-dataframe/
@@ -21,7 +21,7 @@ def estimate_price_from_condition(condition: int, item_description: str):
         raise ValueError('Condition must be between 1 and 5')
 
     # get data matching the item description and remove outliers
-    data = remove_outliers(get_data_frame(item_description))
+    data = remove_outliers(get_dataframe_for_item(item_description))
 
     # separate condition and price columns
     X = data[['condition']]
